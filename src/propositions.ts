@@ -25,16 +25,16 @@ export function lit(name: string): Prop {
 export function bin(op: BinOp, lhs: Prop, rhs: Prop): Prop {
   return { tag: "bin", op: op, lhs: lhs, rhs: rhs };
 }
-export let and  = (lhs, rhs) => bin(BinOp.And,  lhs, rhs);
-export let eqv  = (lhs, rhs) => bin(BinOp.Eqv,  lhs, rhs);
-export let impl = (lhs, rhs) => bin(BinOp.Impl, lhs, rhs);
-export let or   = (lhs, rhs) => bin(BinOp.Or,   lhs, rhs);
-export let xor  = (lhs, rhs) => bin(BinOp.Xor,  lhs, rhs);
+export let and  = (lhs: Prop, rhs: Prop) => bin(BinOp.And,  lhs, rhs);
+export let eqv  = (lhs: Prop, rhs: Prop) => bin(BinOp.Eqv,  lhs, rhs);
+export let impl = (lhs: Prop, rhs: Prop) => bin(BinOp.Impl, lhs, rhs);
+export let or   = (lhs: Prop, rhs: Prop) => bin(BinOp.Or,   lhs, rhs);
+export let xor  = (lhs: Prop, rhs: Prop) => bin(BinOp.Xor,  lhs, rhs);
 
 export function un(op: UnOp, p: Prop): Prop {
   return { tag: "un", op: op, p: p };
 }
-export let not = (p) => un(UnOp.Not, p);
+export let not = (p: Prop) => un(UnOp.Not, p);
 
 // checks if two proposition objects are strictly equal. This means that
 // P and Q !== Q and P, even though they're equivalent.

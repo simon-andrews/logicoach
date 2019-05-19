@@ -99,7 +99,7 @@ export function modusTollens(p: Prop): Prop[] {
   throw 'no good';
 }
 
-const tactics = {
+const tactics:{ [index:string] : Tactic } = {
   deMorganAndToOr: deMorganAndToOr,
   deMorganOrToAnd: deMorganOrToAnd,
   doubleNegation: doubleNegation,
@@ -112,7 +112,7 @@ const tactics = {
 export { tactics };
 
 // https://stackoverflow.com/a/15106541
-export function getRandomTactic() {
+export function getRandomTactic(): Tactic {
   let keys = Object.keys(tactics);
   return tactics[keys[keys.length * Math.random() << 0]];
 }

@@ -1,0 +1,25 @@
+{
+  "name": "logicoach",
+  "version": "1.0.0",
+  "description": "Software for practicing propositional logic proofs.",
+  "main": "main.js",
+  "scripts": {
+    "build": "tsc -p .",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/simon-andrews/logicoach.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "AGPL-3.0",
+  "bugs": {
+    "url": "https://github.com/simon-andrews/logicoach/issues"
+  },
+  "homepage": "https://github.com/simon-andrews/logicoach#readme",
+  "devDependencies": {
+    "@types/node": "^12.0.2",
+    "typescript": "^3.4.5"
+  }
+}
