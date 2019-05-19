@@ -98,3 +98,21 @@ export function modusTollens(p: Prop): Prop[] {
   }
   throw 'no good';
 }
+
+const tactics = {
+  deMorganAndToOr: deMorganAndToOr,
+  deMorganOrToAnd: deMorganOrToAnd,
+  doubleNegation: doubleNegation,
+  leftSeparation: leftSeparation,
+  modusPonens: modusPonens,
+  modusTollens: modusTollens,
+  rightSeparation: rightSeparation,
+  separation: separation,
+};
+export { tactics };
+
+// https://stackoverflow.com/a/15106541
+export function getRandomTactic() {
+  let keys = Object.keys(tactics);
+  return tactics[keys[keys.length * Math.random() << 0]];
+}

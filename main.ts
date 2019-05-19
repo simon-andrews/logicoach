@@ -1,7 +1,6 @@
 import { Prop, lit, compareProps } from "./propositions";
 import { and, eqv, impl, not, or, xor } from "./propositions";
-import { applyTactic } from "./tactics";
-import * as tactics from "./tactics";
+import { tactics, applyTactic, getRandomTactic } from "./tactics";
 import { propToLatex, propToString } from "./uiux";
 
 function randChoice(a: any[]): any {
@@ -36,3 +35,15 @@ function getRandomProp(depth: number = 0): Prop {
 let P: Prop = getRandomProp();
 console.log(propToLatex(P));
 console.log(propToString(P));
+
+/*
+let Q: Prop = not(not(lit("A")));
+
+while (true) {
+  let i = 0;
+  while (compareProps(Q, applyTactic(Q, getRandomTactic())[0])) {
+    i += 1;
+  }
+  console.log(i);
+}
+*/
