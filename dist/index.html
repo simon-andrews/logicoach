@@ -1,0 +1,22 @@
+<head>
+  <script src="bundle.js"></script>
+  <script>
+    // gets a random prop and makes the span have it as its value
+    function updateProp() {
+      let prop = logicoach.getRandomProp();
+      let str = logicoach.propToString(prop);
+      let span = document.getElementById("the-prop");
+      span.innerHTML = str;
+    }
+
+    // once the window is loaded, set the (by default empty) span to have a prop
+    window.onload = updateProp;
+  </script>
+</head>
+<body>
+  <h1>Hello, world!</h1>
+  <div align="center">
+    <p><span id="the-prop"></span></p>
+    <p><button onclick="updateProp()">Gimme another prop!</button></p>
+  </div>
+</body>
