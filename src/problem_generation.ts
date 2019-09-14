@@ -1,6 +1,6 @@
-import { Prop, lit, compareProps } from "./propositions";
+import { Prop, lit, propsEqual } from "./propositions";
 import { and, eqv, impl, not, or, xor } from "./propositions";
-import { tactics, applyTactic, getRandomTactic } from "./tactics";
+import { tactics, applyTactic, getRandomTactic, Tactic } from "./tactics";
 import { propToLatex, propToString } from "./uiux";
 
 function randChoice(a: any[]): any {
@@ -32,18 +32,32 @@ export function getRandomProp(depth: number = 0): Prop {
   }
 }
 
-/*
-let P: Prop = getRandomProp();
-console.log(propToLatex(P));
-console.log(propToString(P));
-
-let Q: Prop = not(not(lit("A")));
-
-while (true) {
-  let i = 0;
-  while (compareProps(Q, applyTactic(Q, getRandomTactic())[0])) {
-    i += 1;
-  }
-  console.log(i);
+export interface Problem {
+  premise: Prop,
+  conclusion: Prop,
 }
- */
+
+export function generateProblem(difficulty: number = 3): Problem {
+  while (true) {
+    const P: Prop = getRandomProp();
+    let Q: Prop = P;
+
+    let changes = 0;
+    const start: number = Date.now();
+    while (changes < difficulty && Date.now() - start < 100) {
+      const tactic: Tactic = getRandomTactic();
+      const transformed: Prop = applyTactic(Q, tactic)[0];
+      if (!propsEqual(Q, transformed)) {
+        Q = transformed;
+        ++changes;
+      }
+    }
+
+    if (changes === difficulty) {
+      return {
+        premise: P,
+        conclusion: Q,
+      }
+    }
+  }
+}

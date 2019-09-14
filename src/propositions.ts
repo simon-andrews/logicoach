@@ -38,18 +38,18 @@ export let not = (p: Prop) => un(UnOp.Not, p);
 
 // checks if two proposition objects are strictly equal. This means that
 // P and Q !== Q and P, even though they're equivalent.
-export function compareProps(p1: Prop, p2: Prop): boolean {
+export function propsEqual(p1: Prop, p2: Prop): boolean {
   // it's awkward, but it makes the type checker happy so :\
   if (p1.tag === "lit" && p2.tag === "lit") {
     return p1.name === p2.name;
   }
   else if (p1.tag === "bin" && p2.tag === "bin") {
     return p1.op === p2.op
-        && compareProps(p1.lhs, p2.lhs)
-        && compareProps(p1.rhs, p2.rhs);
+        && propsEqual(p1.lhs, p2.lhs)
+        && propsEqual(p1.rhs, p2.rhs);
   }
   else if (p1.tag === "un" && p2.tag === "un") {
-    return p1.op === p2.op && compareProps(p1.p, p2.p);
+    return p1.op === p2.op && propsEqual(p1.p, p2.p);
   }
   else {
     return false;

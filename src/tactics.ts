@@ -1,4 +1,4 @@
-import { Prop, BinOp, UnOp, bin, un, compareProps } from "./propositions";
+import { Prop, BinOp, UnOp, bin, un, propsEqual } from "./propositions";
 import { and, not, or } from "./propositions";
 
 // A tactic is a function that takes a proposition and applies some
@@ -84,7 +84,7 @@ export function separation(p: Prop): Prop[] {
 // Modus Ponens
 // P /\ (P -> Q) -> Q
 export function modusPonens(p: Prop): Prop[] {
-  if (p.tag === "bin" && p.op === BinOp.And && p.rhs.tag === "bin" && p.rhs.op === BinOp.Impl && compareProps(p.lhs, p.rhs.lhs)) {
+  if (p.tag === "bin" && p.op === BinOp.And && p.rhs.tag === "bin" && p.rhs.op === BinOp.Impl && propsEqual(p.lhs, p.rhs.lhs)) {
     return [p.rhs.rhs];
   }
   throw 'no good';
@@ -93,7 +93,7 @@ export function modusPonens(p: Prop): Prop[] {
 // Modus Tollens
 // (P -> Q) /\ ~Q -> ~P
 export function modusTollens(p: Prop): Prop[] {
-  if (p.tag === "bin" && p.op === BinOp.And && p.lhs.tag === "bin" && p.lhs.op === BinOp.Impl && p.rhs.tag === "un" && p.rhs.op === UnOp.Not && compareProps(p.lhs.rhs, p.rhs.p)) {
+  if (p.tag === "bin" && p.op === BinOp.And && p.lhs.tag === "bin" && p.lhs.op === BinOp.Impl && p.rhs.tag === "un" && p.rhs.op === UnOp.Not && propsEqual(p.lhs.rhs, p.rhs.p)) {
     return [not(p.lhs.lhs)];
   }
   throw 'no good';
