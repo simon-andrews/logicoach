@@ -1,0 +1,17 @@
+<head>
+  <script src="bundle.js"></script>
+  <script>
+    // once the window is loaded, set the (by default empty) spans to have a prop
+    window.onload = logicoach.updateProblem;
+  </script>
+</head>
+<body>
+  <div align="center">
+    <h1>LogiCoach!</h1>
+    <p>Try to prove that</p>
+    <p><span id="premise"></span></p>
+    <p>implies</p>
+    <p><span id="conclusion"></span></p>
+    <p><button onclick="logicoach.updateProblem()">Gimme another problem!</button></p>
+  </div>
+</body>
