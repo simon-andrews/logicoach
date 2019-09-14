@@ -4,7 +4,7 @@ LogiCoach is (going to be) software for practicing propositional logic proofs. T
 LogiCoach is written in [TypeScript](https://www.typescriptlang.org/) and is inspired by the [Coq](https://coq.inria.fr/) proof management system.
 
 ## Getting started
-Ensure you have [Git](https://git-scm.com/) and [Node.js](https://nodejs.org/en/) installed, then
+Ensure you have [Git](https://git-scm.com/), [Node.js](https://nodejs.org/en/), and [Yarn](https://yarnpkg.com/lang/en/) installed, then
   1. download a copy of LogiCoach: `git clone https://github.com/simon-andrews/logicoach`, then
   2. change your working directory to LogiCoach folder: `cd logicoach`, then
   3. install LogiCoach's dependencies: `yarn install`, then
