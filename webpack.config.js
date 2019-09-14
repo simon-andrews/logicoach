@@ -22,5 +22,8 @@ module.exports = {
     path: path.resolve(__dirname, 'dist'),
     library: 'logicoach',
     libraryTarget: 'var'
+  },
+  devServer: {
+    contentBase: path.join(__dirname, 'dist')
   }
 };

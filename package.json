@@ -5,8 +5,7 @@
   "private": true,
   "scripts": {
     "build": "webpack",
-    "serve": "serve dist",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "serve": "webpack-dev-server"
   },
   "repository": {
     "type": "git",
@@ -21,10 +20,10 @@
   "homepage": "https://github.com/simon-andrews/logicoach#readme",
   "devDependencies": {
     "@types/node": "^12.0.2",
-    "serve": "^11.0.0",
     "ts-loader": "^6.0.1",
     "typescript": "^3.4.5",
     "webpack": "^4.31.0",
-    "webpack-cli": "^3.3.2"
+    "webpack-cli": "^3.3.2",
+    "webpack-dev-server": "^3.8.0"
   }
 }
